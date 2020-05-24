@@ -1,0 +1,46 @@
+using System;
+
+
+namespace Toss
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //number of tosses
+            int limit = 3;
+             
+
+            Coin myCoin = new Coin();
+
+            int headsCount = 0;
+            for (int i = 0; i < limit; i++)
+            {
+                // Toss the coin
+                myCoin.toss();
+                if (myCoin.getSideUp() == 0)
+                {
+                    headsCount++;
+                }
+            }
+          
+            Console.WriteLine("Heads count: " + headsCount);
+            Console.WriteLine("Tails count: " + (limit - headsCount));
+        }
+    }
+}
+class Coin
+{
+    int sideUp;
+    Random rnd = new Random();
+
+    public void toss()
+    {
+        
+        this.sideUp = rnd.Next(2);
+    }
+    public int getSideUp()
+    {
+        return sideUp;
+    }
+}
